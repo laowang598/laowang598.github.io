@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SQL语句 on LW的博客</title>
+        <link>http://localhost:1313/tags/sql%E8%AF%AD%E5%8F%A5/</link>
+        <description>Recent content in SQL语句 on LW的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>LW的技术博客</copyright>
+        <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/sql%E8%AF%AD%E5%8F%A5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>通过SQL Server Profiler截获SQL语句</title>
+        <link>http://localhost:1313/p/sqlserver/2025-09-01/</link>
+        <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/sqlserver/2025-09-01/</guid>
+        <description>&lt;img src="http://localhost:1313/p/sqlserver/2025-09-01/1.png" alt="Featured image of post 通过SQL Server Profiler截获SQL语句" /&gt;&lt;h1 id=&#34;通过sql-server-profiler截获sql语句&#34;&gt;通过SQL Server Profiler截获SQL语句
+&lt;/h1&gt;&lt;p&gt;SQL Server Profiler 是微软官方提供的强大数据库监控工具，可以实时捕获 SQL Server 的各种事件，包括 SQL 语句、存储过程、性能瓶颈等。本文将介绍如何使用 Profiler 截获 SQL 语句，并结合实际场景给出操作步骤。&lt;/p&gt;
+&lt;h2 id=&#34;1-profiler简介&#34;&gt;1. Profiler简介
+&lt;/h2&gt;&lt;p&gt;SQL Server Profiler 可用于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;捕获和分析 SQL Server 执行的所有 SQL 语句&lt;/li&gt;
+&lt;li&gt;监控慢查询、锁等待、死锁等性能问题&lt;/li&gt;
+&lt;li&gt;审计数据库访问和操作&lt;/li&gt;
+&lt;li&gt;追踪应用程序与数据库的交互过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-启动-sql-server-profiler&#34;&gt;2. 启动 SQL Server Profiler
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开 SQL Server Management Studio (SSMS)&lt;/li&gt;
+&lt;li&gt;在菜单栏选择【工具】-&amp;gt;【SQL Server Profiler】&lt;/li&gt;
+&lt;li&gt;连接到目标 SQL Server 实例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-创建跟踪trace&#34;&gt;3. 创建跟踪（Trace）
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;新建跟踪后，选择合适的模板（如“标准”或“TSQL_Replay”）&lt;/li&gt;
+&lt;li&gt;在“事件选择”页，勾选如下关键事件：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SQL:BatchStarting&lt;/strong&gt; / &lt;strong&gt;SQL:BatchCompleted&lt;/strong&gt;：捕approved SQL 语句&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RPC:Completed&lt;/strong&gt;：捕获存储过程调用&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Showplan XML&lt;/strong&gt;：分析执行计划&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可通过“列过滤器”设置数据库、应用名、登录名等过滤条件，精准定位目标语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/sqlserver/2025-09-01/1.png&#34;
+	width=&#34;875&#34;
+	height=&#34;611&#34;
+	srcset=&#34;http://localhost:1313/p/sqlserver/2025-09-01/1_hu_dd695efa8b9a51bf.png 480w, http://localhost:1313/p/sqlserver/2025-09-01/1_hu_56602db96de51c5c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;343px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-实时捕获-sql-语句&#34;&gt;4. 实时捕获 SQL 语句
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;启动跟踪后，Profiler 会实时显示所有捕获到的 SQL 语句&lt;/li&gt;
+&lt;li&gt;可通过“文本数据”列查看完整 SQL 内容&lt;/li&gt;
+&lt;li&gt;支持暂停、停止、保存跟踪结果为文件或表，便于后续分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/sqlserver/2025-09-01/20250904103302.png&#34;
+	width=&#34;874&#34;
+	height=&#34;607&#34;
+	srcset=&#34;http://localhost:1313/p/sqlserver/2025-09-01/20250904103302_hu_de06be87f749c17a.png 480w, http://localhost:1313/p/sqlserver/2025-09-01/20250904103302_hu_85bc8c780ca929a4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;345px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-常见应用场景&#34;&gt;5. 常见应用场景
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;性能优化&lt;/strong&gt;：定位慢查询，分析 SQL 执行计划&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;故障排查&lt;/strong&gt;：捕获异常 SQL，追踪死锁、锁等待&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全审计&lt;/strong&gt;：记录敏感操作，追踪数据变更&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开发调试&lt;/strong&gt;：分析应用与数据库交互，定位参数传递问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;6-注意事项&#34;&gt;6. 注意事项
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;跟踪期间会对数据库性能有一定影响，建议在测试环境或低峰期操作&lt;/li&gt;
+&lt;li&gt;合理设置过滤条件，避免捕获过多无关数据&lt;/li&gt;
+&lt;li&gt;跟踪结果可导出为 .trc 文件，使用 Profiler 或 T-SQL 进一步分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;7-总结&#34;&gt;7. 总结
+&lt;/h2&gt;&lt;p&gt;SQL Server Profiler 是数据库开发和运维不可或缺的利器。通过合理配置和使用，可以高效定位 SQL 问题、优化性能、提升数据库安全性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/zh-cn/sql/tools/sql-server-profiler/sql-server-profiler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
